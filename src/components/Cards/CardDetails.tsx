@@ -1,13 +1,14 @@
+import { base_url } from "config/globals";
 import React, { FC, useEffect, useState } from "react";
 import { Container, Image, TabContent } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 
 const CardDetails: FC<{}> = () => {
-  const id = useParams();
+  const { id } = useParams();
   const [fetchData, updateFetchData] = useState<any>([]);
-  const { name, image, category, price, stock } = fetchData;
+  const { name, createdDate, category, price, stock } = fetchData;
 
-  const api = `https://localhost:5000/api/product/${id}`;
+  const api = `${base_url}/product/${id}/`;
 
   useEffect(() => {
     (async function () {
@@ -19,25 +20,30 @@ const CardDetails: FC<{}> = () => {
   return (
     <>
       <Container className="d-flex justify-content-center">
-        <div className="d-flex flex-column gap-3"></div>
-        <h1 className="text-center">{name}</h1>
-        <Image src={image} alt="" className="img-fluid" />
+        <div className="d-flex flex-column gap-3">
+          <h1 className="text-center">{name}</h1>
+          {/* <Image src={image} alt="" className="img-fluid" /> */}
+          <div className="content">
+            {" "}
+            <div>
+              <span className="fw-bold">Fecha de Elaboración : </span>
+              {createdDate}
+            </div>
+            <div>
+              <span className="fw-bold">Categoría : </span>
+              {category}
+            </div>
+            <div>
+              <span className="fw-bold">Precio : $ </span>
+              {price}
+            </div>
+            <div>
+              <span className="fw-bold">Existencia : </span>
+              {stock}
+            </div>
+          </div>
+        </div>
       </Container>
-      <TabContent>
-        {" "}
-        <div>
-          <span className="fw-bold">Category : </span>
-          {category}
-        </div>
-        <div>
-          <span className="fw-bold">Price : </span>
-          {price}
-        </div>
-        <div>
-          <span className="fw-bold">Stock : </span>
-          {stock}
-        </div>
-      </TabContent>
     </>
   );
 };

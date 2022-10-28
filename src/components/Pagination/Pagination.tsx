@@ -50,7 +50,7 @@ export const Pagination: FC<IProps> = ({
         pageRangeDisplayed={width < 576 ? 1 : 2}
         activeClassName={styles.active}
         onPageChange={(data) => setPageNumber(data.selected + 1)}
-        pageCount={info?.pages}
+        pageCount={info?.count}
       />
     </>
   );

@@ -13,7 +13,7 @@ const Cards: FC<IProps> = ({ results, page }: IProps) => {
 
   if (results) {
     display = results.map((result) => {
-      const { id, name, image, category, price, stock } = result;
+      const { id, name, createdDate, category, price, stock } = result;
       return (
         <Link
           style={{ textDecoration: "none" }}
@@ -24,9 +24,10 @@ const Cards: FC<IProps> = ({ results, page }: IProps) => {
           <div
             className={`${styles.cards} d-flex flex-column justify-content-center`}
           >
-            <Image src={image} alt="" className={`${styles.img} img-fluid`} />
+            {/* <Image src={image} alt="" className={`${styles.img} img-fluid`} /> */}
             <TabContent style={{ padding: "10px" }}>
               <div className="fs-4 fw-bold mb-4">{name}</div>
+              <div className="fs-4 fw-bold mb-4">{createdDate}</div>
               <div className="fs-4 fw-bold mb-4">{category}</div>
               <div className="fs-4 fw-bold mb-4">{price}</div>
               <div className="fs-4 fw-bold mb-4">{stock}</div>

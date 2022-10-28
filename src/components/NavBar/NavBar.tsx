@@ -1,6 +1,5 @@
 import React, { FC } from "react";
 import { Button, Container, Nav } from "react-bootstrap";
-import { ReactComponent as Logo } from "../../logo.svg";
 import { NavLink, Link } from "react-router-dom";
 import styles from "./styles.module.scss";
 
